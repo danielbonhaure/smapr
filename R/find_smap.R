@@ -150,7 +150,7 @@ validate_date <- function(id, version, date) {
 get_dir_contents <- function(path) {
   temp_file <- tempfile()
   on.exit(unlink(temp_file))
-  download_file(file_url = path, file_name = temp_file)
+  download_file(file_url = path, file_path = temp_file)
   nodes <- rvest::html_nodes(xml2::read_html(temp_file), "table")
   df <- rvest::html_table(nodes)[[1]]
   filenames <- df$Name
