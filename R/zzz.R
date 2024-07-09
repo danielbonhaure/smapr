@@ -37,7 +37,8 @@ auth <- function() {
 
 download_file <- function(file_url, file_path) {
   wget_params <- paste("--user", Sys.getenv("ed_un"), 
-                       "--password", Sys.getenv("ed_pw"))
+                       "--password", Sys.getenv("ed_pw"),
+                       "--no-verbose")
   wget_exit_code <- download.file(url = file_url,
                                   destfile = file_path,
                                   method = "wget",
