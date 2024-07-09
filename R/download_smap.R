@@ -118,8 +118,7 @@ get_rel_paths <- function(file) {
 #' @importFrom httr write_disk
 #' @importFrom httr GET
 remote_to_local <- function(local_paths, https_locations, i) {
-    write_loc <- write_disk(local_paths[i], overwrite = TRUE)
-    GET(https_locations[i], write_loc, auth())
+    download_file(https_locations[i], local_paths[i])
 }
 
 verify_download_success <- function(files, downloaded_files) {

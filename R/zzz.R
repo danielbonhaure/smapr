@@ -35,6 +35,17 @@ auth <- function() {
                      password = Sys.getenv("ed_pw"))
 }
 
+download_file <- function(file_url, file_path) {
+  wget_params <- paste("--user", Sys.getenv("ed_un"), 
+                       "--password", Sys.getenv("ed_pw"))
+  wget_exit_code <- download.file(url = file_url,
+                                  destfile = file_path,
+                                  method = "wget",
+                                  extra = wget_params)
+  stopifnot(wget_exit_code == 0)
+  wget_exit_code
+}
+
 check_creds <- function() {
   username_missing <- "" == Sys.getenv("ed_un")
   password_missing <- "" == Sys.getenv("ed_pw")
